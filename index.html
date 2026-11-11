@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#101513" />
+  <title>Dust &amp; Iron — Mojave Outlands</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game" aria-label="3D first-person wasteland game"></canvas>
+    <div class="grain"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">D<span>×</span>I</span><div><b>DUST &amp; IRON</b><small>MOJAVE OUTLANDS · 2281</small></div></div>
+      <div class="top-right"><span class="region-tag"><i></i> THE DRY WASH</span><button id="pause-btn" class="icon-btn" aria-label="Pause">Ⅱ</button></div>
+    </header>
+    <section class="mission-card" id="mission-card">
+      <div class="eyebrow"><span class="tiny-star">✦</span> ACTIVE CONTRACT <span class="line"></span><span id="objective-count">01 / 02</span></div>
+      <h1 id="objective-title">A SIGNAL IN THE DUST</h1>
+      <p id="objective-text">Reach the relay tower and clear the raiders.</p>
+      <div class="mission-progress"><span id="mission-progress"></span></div>
+      <div class="mission-meta"><span>MOJAVE MILEPOST 17</span><span id="distance-label">RELAY · 146 M</span></div>
+    </section>
+    <aside class="compass"><div class="compass-head"><span>NW</span><b>W</b><span>SW</span></div><div class="compass-tick"></div><div class="compass-marker">◆ <span>RELAY</span></div></aside>
+    <div class="crosshair"><i></i><i></i><i></i><i></i><b></b></div>
+    <div id="hitmarker" class="hitmarker">×</div>
+    <div class="toast" id="toast"></div>
+    <div class="interact-prompt" id="interact-prompt">[ E ]  ACTIVATE RELAY</div>
+    <div class="damage-vignette" id="damage-vignette"></div>
+    <section class="bottom-hud">
+      <div class="status-panel"><div class="status-label"><span>VITALS</span><span id="health-value">100</span></div><div class="bar"><i id="health-bar"></i></div><div class="status-foot"><span>RAD <b>0</b></span><span id="level-label">LVL 01</span></div></div>
+      <div class="weapon-panel"><div class="weapon-info"><div><small>ACTIVE WEAPON</small><h2 id="weapon-name">RANGER AR-16</h2><span id="weapon-type">5.56MM · SERVICE CARBINE</span></div><div class="ammo"><b id="ammo-current">24</b><span>/</span><span id="ammo-reserve">96</span></div></div><div class="weapon-switch"><span><kbd>1</kbd> AR-16</span><span><kbd>2</kbd> M1911</span><span><kbd>3</kbd> M1903</span><span><kbd>4</kbd> P9</span><span class="reload-tip"><kbd>R</kbd> RELOAD</span></div></div>
+      <div class="xp-panel"><div class="xp-row"><span>FIELD XP</span><b id="xp-value">000</b></div><div class="bar xp-bar"><i id="xp-bar"></i></div><div class="xp-foot">MOJAVE RANGER <span>▰▰▱▱</span></div></div>
+    </section>
+    <nav class="mobile-controls" aria-label="Touch controls">
+      <div class="move-pad" id="move-pad"><div class="stick-ring"><div id="stick-knob"></div></div><small>MOVE</small></div>
+      <div class="look-hint">DRAG TO LOOK</div>
+      <div class="mobile-actions"><button id="mobile-use" class="touch-btn use-btn">USE</button><button id="mobile-reload" class="touch-btn reload-btn">↻</button><button id="mobile-fire" class="fire-btn" aria-label="Fire">FIRE</button><div class="weapon-cycler"><button id="weapon-prev">‹</button><span id="mobile-weapon-label">AR-16</span><button id="weapon-next">›</button></div></div>
+    </nav>
+    <div id="start-screen" class="overlay">
+      <div class="start-card"><div class="start-kicker">A MOJAVE OUTLANDS STORY <span>— 2281</span></div><div class="logo-title">DUST <i>&amp;</i><br>IRON<span>®</span></div><p class="start-copy">The old world left its guns. The desert kept the score.</p><div class="start-rule"></div><div class="loadout"><span>YOUR LOADOUT</span><b>AR-16 SERVICE CARBINE · M1911</b><b>M1903 SPRINGFIELD · RANGER P9</b></div><button id="start-btn" class="start-btn">ENTER THE WASTELAND <span>→</span></button><div class="controls-copy"><span>WASD MOVE</span><span>MOUSE AIM</span><span>CLICK FIRE</span><span>1–4 SWITCH</span><span>R RELOAD</span></div><small class="touch-copy">Touchscreen: left stick to move · drag to aim · FIRE to shoot</small></div>
+    </div>
+    <div id="pause-screen" class="overlay hidden"><div class="pause-card"><span class="start-kicker">MOJAVE OUTLANDS</span><h2>PAUSED</h2><p>The dust will wait.</p><button id="resume-btn" class="start-btn">BACK TO THE WASH <span>→</span></button></div></div>
+    <div id="end-screen" class="overlay hidden"><div class="pause-card"><span class="start-kicker">CONTRACT COMPLETE</span><h2>THE LINE IS LIVE.</h2><p>The Mojave has a voice again. For tonight.</p><button id="restart-btn" class="start-btn">RUN IT AGAIN <span>↻</span></button></div></div>
+    <div class="mobile-rotate">ROTATE DEVICE FOR THE BEST VIEW</div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
